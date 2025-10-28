@@ -14,7 +14,7 @@ const departmentRepository = {
         return data;
     },
     update: async (dto, departmentId) => {
-        const { data } = await axiosInstance.put(`/departments, ${departmentId}`, dto);
+        const { data } = await axiosInstance.put(`/departments/${departmentId}`, dto);
         return data;
     }, 
     delete: async (departmentId) => {

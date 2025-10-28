@@ -6,9 +6,11 @@ const documentRepository = {
         formData.append("data", new Blob([JSON.stringify(dto)], {type: "application/json"}));
         formData.append("file", file);
 
-        const { data } = await axiosInstance.post("/documents", formData, {
+        const { data } = await axiosInstance.post("/documents", formData, 
+            {
             headers: { "Content-Type" : "multipart/form-data"},
-        });
+            }
+        );
         return data;
     },
     routeDocument: async (documentId) => { 
