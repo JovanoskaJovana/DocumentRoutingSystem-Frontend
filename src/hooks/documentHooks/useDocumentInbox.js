@@ -42,9 +42,9 @@ const useDocumentInbox = (page = 0, size = 10) => {
     }, [fetchInbox]);
    
 
-    const content = data?.content ?? [];
-    const totalPages = data?.totalPages ?? 0;
-    const totalElements = data?.totalElements ?? 0;
+    const content = state.data?.content ?? [];
+    const totalPages = state.data?.totalPages ?? 0;
+    const totalElements = state.data?.totalElements ?? 0;
 
     return {
         ...state,
