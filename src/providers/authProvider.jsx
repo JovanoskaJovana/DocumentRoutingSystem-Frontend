@@ -13,8 +13,8 @@ const isExpired = (payload) => {
 const authProvider = ({children}) => {
 
     const [state, setState] = useState({
-        "user": null,
-        "loading": true
+        user: null,
+        loading: true
     });
 
     const login = (jwtToken) => {

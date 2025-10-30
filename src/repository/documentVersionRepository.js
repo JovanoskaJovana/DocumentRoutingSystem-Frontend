@@ -5,7 +5,7 @@ const documentVersionRepository = {
         const { data } = await axiosInstance.get(`/documents/${documentId}/allVersions`, { params: { page, size }});
         return data;
     },
-    updateDocumentAndVersion: async (documentId, {file, title, changeNote}, page = 0, size = 10,) => {
+    updateDocumentAndVersion: async (documentId, {file, title, changeNote}, page = 0, size = 10) => {
         const formData = new FormData();
         if (file) formData.append("file", file);
         if (title) formData.append("title", title);
