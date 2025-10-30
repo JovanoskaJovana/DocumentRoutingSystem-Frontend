@@ -1,12 +1,15 @@
 import './App.css'
+import {BrowserRouter, Routes, Route} from "react-router";
+import Login from "./ui/components/auth/Login";
 
-function App() {
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+              <Route path="/login" element={<Login/>}/>
+            </Routes>
+        </BrowserRouter>
+    );
+};
 
-  return (
-    <>
-      <h1>Hello</h1>
-    </>
-  )
-}
-
-export default App
+export default App;
