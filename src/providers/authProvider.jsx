@@ -7,7 +7,7 @@ const isExpired = (payload) => {
 
     if (!payload?.exp) return false;
     const now = Date.now();
-    return payload.exp <= now;
+    return payload.exp >= now;
 }
 
 const authProvider = ({children}) => {

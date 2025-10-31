@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import useAuth from "../../../hooks/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import authRepository from "../../../repository/authRepository";
 import { User, Lock, Mail } from "lucide-react";
 import logo from "../../../assets/Logo.png";
@@ -10,13 +10,12 @@ const initialFormData = {
     "password": ""
 };
 
-
 const Login = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState(initialFormData);
 
-    const {login} = useAuth();
+    const {login, isLoggedIn} = useAuth();
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -32,10 +31,16 @@ const Login = () => {
             .then((response)  => {
                 console.log("The user is succesfully logged in.");
                 login(response.token);
-                navigate("/");
+                navigate("/home");
             })
             .catch ((error) => console.log(error));
     };
+
+    useEffect(() => {
+        if(!isLoggedIn) return;
+        navigate('/home')
+
+    }, [isLoggedIn])
 
     return (
         <div className="min-h-screen bg-cream flex items-center justify-center p-4">

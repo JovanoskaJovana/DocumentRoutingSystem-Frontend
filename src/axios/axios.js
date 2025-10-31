@@ -12,7 +12,7 @@ axiosInstance.interceptors.request.use(
     (config) => {
         const jwtToken = localStorage.getItem("token");
         if (jwtToken) {
-            config.headers.Authorization = `Bearer: ${jwtToken}`;
+            config.headers.Authorization = `Bearer ${jwtToken}`;
         }
         return config;
     }
