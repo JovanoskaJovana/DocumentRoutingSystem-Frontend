@@ -10,7 +10,7 @@ const useDownloadDocument = () => {
 
     const [state, setState] = useState(initialState);
 
-    const donwloadDocument = useCallback(async (documentId) => {
+    const downloadDocument = useCallback(async (documentId, versionId, title) => {
         
         setState({
             loading: true,
@@ -18,7 +18,21 @@ const useDownloadDocument = () => {
         });
 
         try {
-            await documentDownloadRepository.downloadPdf(documentId);
+            const blob = await documentDownloadRepository.downloadPdf(documentId, versionId);
+            
+            const url = window.URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = url
+
+            link.setAttribute("download", `${title}.pdf`);
+
+            document.body.appendChild(link);
+            link.click();
+
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
             setState({
                 loading: false, 
                 error: null
@@ -35,7 +49,7 @@ const useDownloadDocument = () => {
 
     return {
         ...state, 
-        donwloadDocument
+        downloadDocument
     }
 
 };

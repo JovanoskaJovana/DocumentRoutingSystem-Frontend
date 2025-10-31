@@ -2,10 +2,10 @@ import axiosInstance from "../axios/axios"
 
 const documentDownloadRepository = {
     downloadPdf: async (documentId, versionId) => {
-        const { data } = await axiosInstance.get(`/documents/${documentId}/versions/${versionId}/download`,
+        const response = await axiosInstance.get(`/documents/${documentId}/versions/${versionId}/download`,
         {responseType : "blob"});
 
-        return { blob : data.data, headers: data.headers };
+        return response.data;
 
     },
     getDownloadsByDocument: async (documentId) => {
