@@ -5,7 +5,7 @@ const documentActionRepository = {
         const { data } = await axiosInstance.get(`/documents/${documentId}/documentActions`);
         return data;
     },
-    getAllActionsByEmployeeId: async (documentId) => {
+    getMyDocumentActions: async (documentId) => {
         const { data } = await axiosInstance.get(`/documents/${documentId}/actionsByMe`);
         return data;
     }

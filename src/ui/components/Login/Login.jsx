@@ -14,8 +14,9 @@ const Login = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState(initialFormData);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const {login, isLoggedIn} = useAuth();
+    const {login, isLoggedIn} = useAuth();;
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -31,14 +32,21 @@ const Login = () => {
             .then((response)  => {
                 console.log("The user is succesfully logged in.");
                 login(response.token);
-                navigate("/home");
+                navigate("/");
             })
-            .catch ((error) => console.log(error));
+            .catch ((error) => {
+
+                console.log(error);
+                
+                if (error.response?.status === 401) {
+                    setErrorMessage("Email or password is incorrect.");
+                }
+            });
     };
 
     useEffect(() => {
         if(!isLoggedIn) return;
-        navigate('/home')
+        navigate('/')
 
     }, [isLoggedIn])
 
@@ -109,6 +117,12 @@ const Login = () => {
                                 >
                                     Login
                                 </button>
+
+                                {errorMessage && (
+                                     <p className="mt-4 text-center text-red-600 font-medium">
+                                        {errorMessage}
+                                    </p>
+                                )}
                             </div>
                         </form>
                     </div>

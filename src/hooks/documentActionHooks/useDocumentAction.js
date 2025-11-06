@@ -1,4 +1,4 @@
-import { use, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import documentActionRepository from "../../repository/documentActionRepository";
 
 const initialState = {
@@ -13,7 +13,7 @@ const useDocumentAction = (documentId, scope = "all") => {
 
     const fetchActions = useCallback(async () => {
 
-        if (!document) return;
+        if (!documentId) return;
         setState(prev => ({
             ...prev,
             loading: true,
@@ -22,12 +22,17 @@ const useDocumentAction = (documentId, scope = "all") => {
 
         try {
             
-            const data = scope === "all" ? await documentActionRepository.getAllDocumentActions(documentId) : 
-            await documentActionRepository.getAllActionsByEmployeeId(documentId);
+            let data; 
+
+            if (scope === "all") {
+                data = await documentActionRepository.getAllDocumentActions(documentId);
+            } else if (scope === "mine") {
+                data = await documentActionRepository.getMyDocumentActions(documentId);
+            }
 
             setState({
                 data,
-                laoding: false,
+                loading: false,
                 error: null
             });
         } catch (error) {
