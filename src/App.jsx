@@ -8,6 +8,7 @@ import DocumentDeptList from './ui/components/Department/DocumentDeptList';
 import DocumentHistoryList from './ui/components/History/DocumentHistoryList';
 import DocumentActionList from './ui/components/Actions/DocumentActionList.jsx';
 import ProtectedRoute from './ui/components/ProtectedRoute/ProtectedRoute';
+import VersionList from './ui/components/Versions/VersionList.jsx';
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                         <Route path="department" element={<DocumentDeptList />} />
                         <Route path="history" element={<DocumentHistoryList/>} />
                         <Route path="documents/:documentId/actions" element={<DocumentActionList/>} />
+                        <Route path="documents/:documentId/versions" element={<VersionList/>} />
                     </Route>
                 </Route>
                 
