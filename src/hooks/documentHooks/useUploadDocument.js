@@ -3,7 +3,7 @@ import documentRepository from "../../repository/documentRepository";
 
 const initialState = {
     loading: false,
-    error: null
+    error: null,
 };
 
 const useUploadDocument = () => {
@@ -18,11 +18,15 @@ const useUploadDocument = () => {
         });
 
         try {
-            await documentRepository.uploadDocument(dto, file);
+            const data = await documentRepository.createDocument(dto, file);
+            
             setState({
                loading: false,
                error: null
             });
+
+            return data;
+            
         } catch (error) {
             console.error("Failed to upload document", error);
             setState({

@@ -8,7 +8,7 @@ const pageTitleFromPath = (pathname) => {
   
   if (pathname === "/") return "Inbox";
   if (pathname.startsWith("/downloads")) return "My Downloads";
-  if (pathname.startsWith("/documents")) return "Upload Document";
+  if (pathname.startsWith("/upload")) return "Upload Document";
   if (pathname.startsWith("/history")) return "History";
   if (pathname.startsWith("/department")) return "Department";
   return "";
