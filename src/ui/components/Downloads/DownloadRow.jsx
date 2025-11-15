@@ -1,5 +1,3 @@
-const DocumentRow = ({ document }) => {
-
 
   const formatDate = (isoString) => {
     if (!isoString) return "N/A";
@@ -12,6 +10,9 @@ const DocumentRow = ({ document }) => {
       minute: "2-digit",
     });
   };
+
+
+const DocumentRow = ({ document }) => {
 
   return (
     <div className="bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#B8860B]/30 transition-all duration-200 rounded-lg overflow-visible group relative">

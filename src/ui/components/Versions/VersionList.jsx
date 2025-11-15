@@ -2,26 +2,30 @@ import useDocumentVersions from "../../../hooks/documentVersionHooks/useDocument
 import { useParams, useOutletContext } from "react-router";
 import { useEffect } from "react";
 import VersionRow from "./VersionRow";
-
+import { FileText, ArrowLeft } from "lucide-react";
 
 
 const VersionList = (page = 0, size = 10) => {
 
     const { documentId } = useParams();
-
     const { data } = useDocumentVersions(documentId, page, size);
-    console.log(data);
-
     const { setPageTitle } = useOutletContext();
 
     useEffect(() => {
           if (data?.content?.length > 0)  {
-              setPageTitle(data.content[0].document);
+              setPageTitle("Document: " + data.content[0].document);
           };
     }, [data, setPageTitle]);
 
     return (
       <div className="max-w-6xl mx-auto py-6 px-4">
+        <button
+          onClick={() => window.history.back()}
+          className="flex items-center gap-2 mb-6 text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span className="font-medium">Back</span>
+        </button>
     
         {/* Table Header */}
         <div className="bg-white border border-gray-200 shadow-sm mb-3 rounded-lg overflow-hidden">
@@ -54,9 +58,7 @@ const VersionList = (page = 0, size = 10) => {
               <FileText className="w-16 h-16 text-[#B8860B]" />
             </div>
             <p className="text-gray-600 text-lg">
-              {activeTab === "all"
-                ? "No documents found"
-                : "You have no documents"}
+                No versions found for this document.
             </p>
           </div>
         )}

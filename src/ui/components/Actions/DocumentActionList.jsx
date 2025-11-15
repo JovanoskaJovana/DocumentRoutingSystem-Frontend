@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { FileText } from "lucide-react";
+import { FileText, ArrowLeft } from "lucide-react";
 import DocumentActionRow from "./DocumentActionRow";
 import useDocumentAction from "../../../hooks/documentActionHooks/useDocumentAction";
 import { useParams, useOutletContext } from "react-router";
-import useAuth from "../../../hooks/useAuth";
 
 const DocumentActionList = () => {
 
@@ -16,7 +15,7 @@ const DocumentActionList = () => {
 
     useEffect(() => {
           if (data && data.length > 0)  {
-              setPageTitle(data[0].document);
+              setPageTitle("Document: " + data[0].document);
           };
     }, [data, activeTab, setPageTitle]);
 
@@ -26,6 +25,15 @@ const DocumentActionList = () => {
 
     return (
       <div className="max-w-6xl mx-auto py-6 px-4">
+
+        <button
+          onClick={() => window.history.back()}
+          className="flex items-center gap-2 mb-6 text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span className="font-medium">Back</span>
+        </button>
+
         {/* Tabs */}
         <div className="mb-6 flex justify-center">
           <div className="inline-flex bg-[#FFFBF7] rounded-lg p-1 gap-2 border border-gray-200">

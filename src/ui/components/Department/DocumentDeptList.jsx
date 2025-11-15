@@ -1,5 +1,6 @@
 import useRoutedToDepartment from "../../../hooks/documentHooks/useRoutedToDepartment";
 import DocumentDeptRow from "./DocumentDeptRow";
+import { FileText } from "lucide-react";
 
 const DocumentDeptList = () => {
 
@@ -9,24 +10,23 @@ const DocumentDeptList = () => {
         <div className="max-w-6.5xl mx-auto py-6 px-4">
         {/* Table header */}
         <div className="bg-white border border-gray-200 shadow-sm mb-3 rounded-lg overflow-hidden">
-            <div className="grid grid-cols-[2fr,1.5fr,1fr,1fr,auto,auto] gap-4 px-6 py-3 bg-[#FFFBF7] border-b border-gray-100">
-                <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+            <div className="grid grid-cols-[2fr,1.5fr,1fr,1fr,1fr,1fr] items-center px-6 py-4 bg-[#FFFBF7] border-b border-gray-100">
+                <div className="font-semibold text-gray-700 text-sm uppercase text-left">
                     Document Title
                 </div>
-                <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+                <div className="font-semibold text-gray-700 text-sm uppercase text-left">
                     Document Status
                 </div>
-                <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+                <div className="font-semibold text-gray-700 text-sm uppercase text-left">
                     Document Version
                 </div>
-                <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+                <div className="font-semibold text-gray-700 text-sm uppercase text-left">
                     Uploader
                 </div>
-                <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+                <div className="font-semibold text-gray-700 text-sm uppercase text-left">
                     Uploaded Time
                 </div>
-                <div className="w-[120px]"></div>
-                <div className="w-[40px]"></div>
+                <div />
             </div>
         </div>
 

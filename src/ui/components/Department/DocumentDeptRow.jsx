@@ -3,14 +3,7 @@ import useDownloadDocument from "../../../hooks/documentDownloadHooks/useDownloa
 import { useNavigate } from "react-router";
 import { MoreVertical } from 'lucide-react';
 
-
-const DocumentRow = ({document}) => {
-    const menuRef = useRef(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const navigate = useNavigate();
-    const {downloadDocument, loading} = useDownloadDocument();
-
-    const formatDate = (isoString) => {
+const formatDate = (isoString) => {
         if (!isoString) return "N/A";
         const date = new Date(isoString);
         return date.toLocaleString("en-GB", {
@@ -21,6 +14,13 @@ const DocumentRow = ({document}) => {
             minute: "2-digit",
         });
     };
+
+
+const DocumentRow = ({document}) => {
+    const menuRef = useRef(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
+    const {downloadDocument, loading} = useDownloadDocument();
 
     useEffect(() => {
 
@@ -46,7 +46,7 @@ const DocumentRow = ({document}) => {
 
     return (
         <div className="bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#B8860B]/30 transition-all duration-200 rounded-lg overflow-visible group relative">
-            <div className="grid grid-cols-[2fr,1.5fr,1fr,1fr,auto,auto] gap-6 items-center px-6 py-4">
+            <div className="grid grid-cols-[2fr,1.5fr,1fr,1fr,1fr,1fr] items-center px-6 py-4">
 
                 {/* Title */}
                 <div className="font-medium text-gray-900 group-hover:text-[#B8860B] transition-colors truncate">
@@ -74,7 +74,7 @@ const DocumentRow = ({document}) => {
                 <div className="text-gray-600 truncate">
                     {formatDate(document.uploadedDateTime)}
                 </div>
-
+                <div className="flex items-center justify-end gap-2">
                 {/* Download button */}
                 <button
                     disabled={loading}
@@ -109,6 +109,7 @@ const DocumentRow = ({document}) => {
                         ))}
                     </div>
                     )}
+                </div>
                 </div>
             </div>
         </div>
