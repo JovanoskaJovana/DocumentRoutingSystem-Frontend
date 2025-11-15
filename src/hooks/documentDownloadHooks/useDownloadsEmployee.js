@@ -31,7 +31,7 @@ const useDownloadEmployee = () => {
             setState({
                 data: null,
                 loading: false,
-                error: null
+                error
             });
         }
 

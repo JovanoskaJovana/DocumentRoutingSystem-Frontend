@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import documentDownloadRepository from "../../repository/documentDownloadRepository";
 
 const initialState = {
-    data: null,
+    data: [],
     loading: true, 
     error: null
 };
@@ -20,7 +20,7 @@ const useDocumentDownloads = (documentId) => {
         }));
 
         try {
-            const data = documentDownloadRepository.getDownloadsByDocument(documentId);
+            const data = await documentDownloadRepository.getDownloadsByDocument(documentId);
             setState({
                 data,
                 loading: false,

@@ -1,5 +1,6 @@
 import useDownloadEmployee from "../../../hooks/documentDownloadHooks/useDownloadsEmployee";
 import DownloadRow from "./DownloadRow";
+import { FileText } from "lucide-react";
 
 const DocumentList = () => {
     const { data } = useDownloadEmployee();

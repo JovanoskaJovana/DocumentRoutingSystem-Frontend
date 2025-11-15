@@ -9,6 +9,8 @@ import DocumentHistoryList from './ui/components/History/DocumentHistoryList';
 import DocumentActionList from './ui/components/Actions/DocumentActionList.jsx';
 import ProtectedRoute from './ui/components/ProtectedRoute/ProtectedRoute';
 import VersionList from './ui/components/Versions/VersionList.jsx';
+import DocumentDownloadList from './ui/components/DocumentDownloads/DocumentDownloadList.jsx';
+import DocumentUpload from './ui/components/UploadAndRoute/DocumentUpload.jsx';
 
 const App = () => {
     return (
@@ -22,8 +24,10 @@ const App = () => {
                         <Route path="downloads" element={<DownloadList />} />
                         <Route path="department" element={<DocumentDeptList />} />
                         <Route path="history" element={<DocumentHistoryList/>} />
+                        <Route path="upload" element={<DocumentUpload/>} />
                         <Route path="documents/:documentId/actions" element={<DocumentActionList/>} />
                         <Route path="documents/:documentId/versions" element={<VersionList/>} />
+                        <Route path="documents/:documentId/downloads" element={<DocumentDownloadList/>} />
                     </Route>
                 </Route>
                 
