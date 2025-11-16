@@ -13,6 +13,7 @@ import DocumentDownloadList from './ui/EmployeeComponents/DocumentDownloads/Docu
 import DocumentUpload from './ui/EmployeeComponents/UploadAndRoute/DocumentUpload.jsx';
 import EditDocument from './ui/EmployeeComponents/EditDocument/EditDocument.jsx';
 import AdminRoute from './ui/AdminComponents/AdminRoute/AdminRoute.jsx';
+import DepartmentList from './ui/AdminComponents/DepartmentComponent/DepartmentList.jsx';
 
 const App = () => {
     return (
@@ -33,7 +34,12 @@ const App = () => {
                         <Route path="documents/:documentId/edit" element={<EditDocument/>}/>
                     </Route>
 
-                    <Route element={<AdminRoute/>}></Route>
+                    <Route element={<AdminRoute />}>
+                        <Route path="/" element={<Layout />}>
+                        <Route index element={<DepartmentList />} />
+                        <Route path="departments" element={<DepartmentList />} />
+                        </Route>
+                    </Route>
                 </Route>
                 
             </Routes>

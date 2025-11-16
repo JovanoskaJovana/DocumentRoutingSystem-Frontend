@@ -14,11 +14,11 @@ const useDepartments = () => {
 
     const fetchDepartments = useCallback( async () => {
 
-        setState({
+        setState(prev => ({
             ...prev,
             loading: true,
             error: null
-        });
+        }));
 
         try {
             const departmets = await departmentRepository.listAll();
