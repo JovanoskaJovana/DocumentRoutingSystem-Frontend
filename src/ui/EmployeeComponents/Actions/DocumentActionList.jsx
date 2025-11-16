@@ -11,6 +11,7 @@ const DocumentActionList = () => {
 
     const { documentId } = useParams();
     const { data } = useDocumentAction(documentId, scope);
+    console.log(data)
     const { setPageTitle } = useOutletContext();
 
     useEffect(() => {
@@ -62,7 +63,7 @@ const DocumentActionList = () => {
 
         {/* Table Header */}
         <div className="bg-white border border-gray-200 shadow-sm mb-3 rounded-lg overflow-hidden">
-          <div className="grid grid-cols-[2fr,1.5fr,1fr,1fr,auto,auto] gap-8 px-6 py-4 bg-[#FFFBF7] border-b border-gray-100">
+          <div className="grid grid-cols-[2fr,1fr,1fr,1fr] gap-8 px-6 py-4 bg-[#FFFBF7] border-b border-gray-100">
             <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
               Document Title
             </div>
@@ -75,8 +76,6 @@ const DocumentActionList = () => {
             <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
               Action
             </div>
-            <div className="w-[120px]"></div>
-            <div className="w-[40px]"></div>
           </div>
         </div>
 

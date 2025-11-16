@@ -1,17 +1,17 @@
 import './App.css'
-import {BrowserRouter, Routes, Route, Navigate} from "react-router";
-import Login from "./ui/components/Login/Login";
-import Layout from './ui/components/Layout/Layout';
-import DocumentList from './ui/components/inbox/DocumentList';
-import DownloadList from './ui/components/Downloads/DownloadList';
-import DocumentDeptList from './ui/components/Department/DocumentDeptList';
-import DocumentHistoryList from './ui/components/History/DocumentHistoryList';
-import DocumentActionList from './ui/components/Actions/DocumentActionList.jsx';
-import ProtectedRoute from './ui/components/ProtectedRoute/ProtectedRoute';
-import VersionList from './ui/components/Versions/VersionList.jsx';
-import DocumentDownloadList from './ui/components/DocumentDownloads/DocumentDownloadList.jsx';
-import DocumentUpload from './ui/components/UploadAndRoute/DocumentUpload.jsx';
-import EditDocument from './ui/components/EditDocument/EditDocument.jsx';
+import {BrowserRouter, Routes, Route} from "react-router";
+import Login from './ui/EmployeeComponents/Login/Login.jsx';
+import Layout from './ui/EmployeeComponents/Layout/Layout.jsx'
+import DocumentList from './ui/EmployeeComponents/Inbox/DocumentList.jsx';
+import DownloadList from './ui/EmployeeComponents/Downloads/DownloadList';
+import DocumentDeptList from './ui/EmployeeComponents/Department/DocumentDeptList';
+import DocumentHistoryList from './ui/EmployeeComponents/History/DocumentHistoryList';
+import DocumentActionList from './ui/EmployeeComponents/Actions/DocumentActionList.jsx';
+import ProtectedRoute from './ui/EmployeeComponents/ProtectedRoute/ProtectedRoute';
+import VersionList from './ui/EmployeeComponents/Versions/VersionList.jsx';
+import DocumentDownloadList from './ui/EmployeeComponents/DocumentDownloads/DocumentDownloadList.jsx';
+import DocumentUpload from './ui/EmployeeComponents/UploadAndRoute/DocumentUpload.jsx';
+import EditDocument from './ui/EmployeeComponents/EditDocument/EditDocument.jsx';
 
 const App = () => {
     return (

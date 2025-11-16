@@ -6,24 +6,30 @@ const DocumentList = () => {
   const { data } = useDocumentInbox();
 
   return (
-    <div className="max-w-6.5xl mx-auto py-6 px-4">
+    <div className="max-w-7xl mx-auto py-6 px-4">
       {/* Table header */}
       <div className="bg-white border border-gray-200 shadow-sm mb-3 rounded-lg overflow-hidden">
-        <div className="grid grid-cols-[2fr,1.5fr,1fr,1fr,auto,auto] gap-6 px-6 py-4 bg-[#FFFBF7] border-b border-gray-100">
+        <div className="grid grid-cols-[2fr,1.5fr,1fr,1.5fr,1.2fr,1.5fr,40px] gap-6 px-6 py-4 bg-[#FFFBF7] border-b border-gray-100 text-center">
           <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
             Document Title
           </div>
           <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
             Document Status
           </div>
-          <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+          <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide text-center">
             Document Version
           </div>
           <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
             Uploader
           </div>
-          <div className="w-[120px]"></div>
-          <div className="w-[40px]"></div>
+          <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide text-center">
+            Download
+          </div>
+          <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide text-center">
+            Action
+          </div>
+          {/* empty cell for kebab column */}
+          <div></div>
         </div>
       </div>
 
