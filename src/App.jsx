@@ -12,6 +12,7 @@ import VersionList from './ui/EmployeeComponents/Versions/VersionList.jsx';
 import DocumentDownloadList from './ui/EmployeeComponents/DocumentDownloads/DocumentDownloadList.jsx';
 import DocumentUpload from './ui/EmployeeComponents/UploadAndRoute/DocumentUpload.jsx';
 import EditDocument from './ui/EmployeeComponents/EditDocument/EditDocument.jsx';
+import AdminRoute from './ui/AdminComponents/AdminRoute/AdminRoute.jsx';
 
 const App = () => {
     return (
@@ -31,6 +32,8 @@ const App = () => {
                         <Route path="documents/:documentId/downloads" element={<DocumentDownloadList/>} />
                         <Route path="documents/:documentId/edit" element={<EditDocument/>}/>
                     </Route>
+
+                    <Route element={<AdminRoute/>}></Route>
                 </Route>
                 
             </Routes>

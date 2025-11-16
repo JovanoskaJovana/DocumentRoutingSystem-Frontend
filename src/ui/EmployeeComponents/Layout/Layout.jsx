@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { Outlet, useLocation } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import { useState, useEffect } from "react";
+import AdminSidebar from "../../AdminComponents/AdminSidebar/AdminSidebar";
 
 const pageTitleFromPath = (pathname) => {
   
@@ -22,6 +23,7 @@ const Layout = () => {
   const [overrideTitle, setOverrideTitle] = useState("");
 
   const userName = user?.firstName;
+  const isAdmin = user?.role === "ADMIN";
   const defaultTitle = pageTitleFromPath(location.pathname);
   const pageTitle = overrideTitle || defaultTitle;
 
@@ -32,7 +34,7 @@ const Layout = () => {
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-gray-50 via-[#FFFBF7] to-gray-50">
-      <Sidebar />
+      {isAdmin ? <AdminSidebar/> : <Sidebar />}
 
       <div className="flex-1 flex flex-col overflow-hidden">
 
