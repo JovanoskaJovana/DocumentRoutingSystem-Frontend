@@ -11,6 +11,7 @@ import ProtectedRoute from './ui/components/ProtectedRoute/ProtectedRoute';
 import VersionList from './ui/components/Versions/VersionList.jsx';
 import DocumentDownloadList from './ui/components/DocumentDownloads/DocumentDownloadList.jsx';
 import DocumentUpload from './ui/components/UploadAndRoute/DocumentUpload.jsx';
+import EditDocument from './ui/components/EditDocument/EditDocument.jsx';
 
 const App = () => {
     return (
@@ -28,6 +29,7 @@ const App = () => {
                         <Route path="documents/:documentId/actions" element={<DocumentActionList/>} />
                         <Route path="documents/:documentId/versions" element={<VersionList/>} />
                         <Route path="documents/:documentId/downloads" element={<DocumentDownloadList/>} />
+                        <Route path="documents/:documentId/edit" element={<EditDocument/>}/>
                     </Route>
                 </Route>
                 

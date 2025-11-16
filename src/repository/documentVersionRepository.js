@@ -18,6 +18,10 @@ const documentVersionRepository = {
             }
         );
         return data;
+    },
+    getVersion: async (versionId) => {
+        const { data } = await axiosInstance.get(`/documents/version/${versionId}`);
+        return data;
     }
 };
 

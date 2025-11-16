@@ -24,12 +24,14 @@ const useSignDocumentAction = () => {
                 loading: false,
                 error:null
             });
+            return true;
         } catch (error) {
             console.error("Failed to approve document", error);
             setState({
                 loading: false,
                 error
             });
+            return false;
         }
     },[]);
 
@@ -46,12 +48,14 @@ const useSignDocumentAction = () => {
                 loading: false,
                 error:null
             });
+            return true;
         } catch (error) {
             console.error("Failed to approve document", error);
             setState({
                 loading: false,
                 error
             });
+            return false;
         }
         
 

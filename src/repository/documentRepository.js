@@ -38,9 +38,11 @@ const documentRepository = {
     getRoutedToEmployeeDepartment: async (page = 0, size = 10) => {
         const { data } = await axiosInstance.get("/documents/routedToMyDepartment", { params: { page, size }});
         return data;
+    },
+    getDocument: async (documentId) => {
+        const { data } = await axiosInstance.get(`/documents/${documentId}`);
+        return data;
     }
-
-
 };
 
 export default documentRepository;
