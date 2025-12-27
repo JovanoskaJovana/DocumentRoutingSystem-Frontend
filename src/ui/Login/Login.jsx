@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import authRepository from "../../../repository/authRepository";
+import authRepository from "../../repository/authRepository";
 import { User, Lock, Mail } from "lucide-react";
 import logo from "../../../assets/Logo.png";
 
