@@ -43,9 +43,11 @@ const DocumentHistoryRow = ({document}) => {
                     {document.currentVersion}
                 </div>
 
-                {/* Uploader */}
-                <div className="text-gray-600 truncate">
-                    {document.uploadedByEmployee}
+                {/* Routed to */}
+                <div className="text-gray-600">
+                    {document.routedToEmployees.map((name, index) => (
+                        <div key={index}> {name}</div>
+                    ))}
                 </div>
 
                 {/* Download button */}

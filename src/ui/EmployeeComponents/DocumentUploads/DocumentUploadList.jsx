@@ -7,6 +7,7 @@ const DocumentHistory = () => {
     const uploadHistory = useDocumentUploads();
 
     const data =  uploadHistory.data;
+    console.log(data);
 
     return (
         <div className="max-w-6.5xl mx-auto py-6 px-4">
@@ -24,7 +25,7 @@ const DocumentHistory = () => {
                         Document Version
                     </div>
                     <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
-                        Uploader
+                        Routed to
                     </div>
                     <div className="w-[120px]"></div>
                     <div className="w-[40px]"></div>
