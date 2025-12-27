@@ -1,44 +1,30 @@
-import { useEffect, useRef, useState } from "react";
-import useDownloadDocument from "../../../hooks/documentDownloadHooks/useDownloadDocument";
 import { useNavigate } from "react-router";
-import { MoreVertical } from 'lucide-react';
+import useAuth from "../../../hooks/useAuth";
+import DownloadButton from "../../sharedComponents/DownloadButton";
+import KebabMenu from "../../sharedComponents/KebabMenu";
 
 const formatDate = (isoString) => {
-        if (!isoString) return "N/A";
-        const date = new Date(isoString);
-        return date.toLocaleString("en-GB", {
-            year: "numeric",
-            month: "short", 
-            day: "2-digit", 
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    };
+    if (!isoString) return "N/A";
+
+    const date = new Date(isoString);
+
+    return date.toLocaleString("en-GB", {
+        year: "numeric",
+        month: "short", 
+        day: "2-digit", 
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+};
 
 
 const DocumentRow = ({document}) => {
-    const menuRef = useRef(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const navigate = useNavigate();
-    const {downloadDocument, loading} = useDownloadDocument();
-
-    useEffect(() => {
-
-        const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
-                setIsMenuOpen(false);
-            }
-        };
-
-        window.document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            window.document.removeEventListener("mousedown", handleClickOutside);
-        }; //cleanup function
-
-    }, []);
+    const { user } = useAuth();
+    const isRegular = user?.employeeType === "REGULAR";
 
     const menuItems = [
-        {label: "Edit Document", action: () => navigate(`/documents/${document.documentId}/edit`)},
         {label: "All Actions", action: () => navigate(`/documents/${document.documentId}/actions`)},
         {label: "All Versions", action: () => navigate(`/documents/${document.documentId}/versions`)},
         {label: "All Downloads", action: () => navigate(`/documents/${document.documentId}/downloads`)}
@@ -70,46 +56,18 @@ const DocumentRow = ({document}) => {
                     {document.uploadedByEmployee}
                 </div>
 
-                {/* Time */}
+                {/* Date */}
                 <div className="text-gray-600 truncate">
                     {formatDate(document.uploadedDateTime)}
                 </div>
+                
                 <div className="flex items-center justify-end gap-2">
-                {/* Download button */}
-                <button
-                    disabled={loading}
-                    onClick={() => {
-                        const versionId = document.currentVersionDownloadUrl.split("/versions/")[1].split("/download")[0];
-                        downloadDocument(document.documentId, versionId, document.title);
-                    }}
-                    className="px-6 py-2 border border-[#E4742B]/20 text-[#E4742B] bg-white hover:bg-[#FFFBF7] rounded-lg font-medium transition-colors duration-150 whitespace-nowrap">
-                    {loading ? "Downloading..." : "Download"}
-                </button>
 
-                {/* Kebab menu */}
-                <div className="relative w-[40px]" ref={menuRef}>
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="p-2 hover:bg-[#FFFBF7] rounded transition-colors duration-150 border border-transparent hover:border-[#B8860B]/30" aria-label="More options">
-                        <MoreVertical className="w-5 h-5 text-gray-600 group-hover:text-[#B8860B]" />
-                    </button>
+                    {/* Download button */}
+                    {!isRegular && <DownloadButton downloadUrl={document.currentVersionDownloadUrl} documentId={document.documentId} fileName={document.title}/>}
 
-                    {isMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                        {menuItems.map((item, index) => (
-                        <button
-                            key={index}
-                            onClick={() => {
-                                item.action();
-                                setIsMenuOpen(false);
-                            }}
-                            className="w-full px-4 py-2 text-left text-gray-700 hover:bg-[#FFFBF7] transition-colors border-b border-gray-100 last:border-b-0 font-medium first:rounded-t-lg last:rounded-b-lg">
-                            {item.label}
-                        </button>
-                        ))}
-                    </div>
-                    )}
-                </div>
+                    {/* Kebab menu */}
+                    <KebabMenu items={menuItems}/>
                 </div>
             </div>
         </div>

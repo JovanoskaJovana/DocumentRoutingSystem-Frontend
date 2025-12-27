@@ -1,29 +1,15 @@
-import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { MoreVertical } from "lucide-react";
-import useDownloadDocument from "../../../hooks/documentDownloadHooks/useDownloadDocument";
 import useSignDocumentAction from "../../../hooks/documentHooks/useSignDocumentActions";
+import useAuth from "../../../hooks/useAuth";
+import DownloadButton from "../../sharedComponents/DownloadButton";
+import KebabMenu from "../../sharedComponents/KebabMenu";
 
 const DocumentRow = ({ document }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
   const navigate = useNavigate();
-  const { downloadDocument, loading } = useDownloadDocument();
   const { onApprove } = useSignDocumentAction();
   const { onReject } = useSignDocumentAction();
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.document.removeEventListener("mousedown", handleClickOutside);
-    }; // cleanup
-  }, []);
+  const { user } = useAuth();
+  const isAdmin = user?.role === "ADMIN";
 
   const menuItems = [
     { label: "Edit Document", action: () => navigate(`/documents/${document.documentId}/edit`) },
@@ -75,65 +61,33 @@ const DocumentRow = ({ document }) => {
           {document.uploadedByEmployee}
         </div>
 
-        {/* Download button (Download column) */}
+        {/* Download Button */}
         <div className="flex justify-center">
-          <button
-            disabled={loading}
-            onClick={() => {
-              const versionId = document.currentVersionDownloadUrl
-                .split("/versions/")[1]
-                .split("/download")[0];
-              downloadDocument(document.documentId, versionId, document.title);
-            }}
-            className="px-6 py-2 border border-[#E4742B]/20 text-[#E4742B] bg-white hover:bg-[#FFFBF7] rounded-lg font-medium transition-colors duration-150 whitespace-nowrap"
-          >
-            {loading ? "Downloading..." : "Download"}
-          </button>
+          <DownloadButton downloadUrl={document.currentVersionDownloadUrl} documentId={document.documentId} fileName={document.title}/>
         </div>
 
         {/* Approve / Reject (Action column) */}
-        <div className="flex items-center justify-center gap-2">
-          <button
-            onClick={handleApprove}
-            className="px-6 py-2 border border-green-600/20 text-green-600 bg-white hover:bg-green-50 rounded-lg font-medium transition-colors duration-150 whitespace-nowrap"
-          >
-            Approve
-          </button>
-          <button
-            onClick={handleReject}
-            className="px-6 py-2 border border-red-600/20 text-red-600 bg-white hover:bg-red-50 rounded-lg font-medium transition-colors duration-150 whitespace-nowrap"
-          >
-            Reject
-          </button>
-        </div>
+        { !isAdmin && (
+          <div className="flex items-center justify-center gap-2">
+            <button
+              onClick={handleApprove}
+              className="px-6 py-2 border border-green-600/20 text-green-600 bg-white hover:bg-green-50 rounded-lg font-medium transition-colors duration-150 whitespace-nowrap"
+            >
+              Approve
+            </button>
+            <button
+              onClick={handleReject}
+              className="px-6 py-2 border border-red-600/20 text-red-600 bg-white hover:bg-red-50 rounded-lg font-medium transition-colors duration-150 whitespace-nowrap"
+            >
+              Reject
+            </button>
+          </div>
+        )}
 
-        {/* Kebab menu */}
-        <div className="relative w-[40px]" ref={menuRef}>
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 hover:bg-[#FFFBF7] rounded transition-colors duration-150 border border-transparent hover:border-[#B8860B]/30"
-            aria-label="More options"
-          >
-            <MoreVertical className="w-5 h-5 text-gray-600 group-hover:text-[#B8860B]" />
-          </button>
+        { !isAdmin && (
+          <KebabMenu items={menuItems}/>
+        )}
 
-          {isMenuOpen && (
-            <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-              {menuItems.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    item.action();
-                    setIsMenuOpen(false);
-                  }}
-                  className="w-full px-4 py-2 text-left text-gray-700 hover:bg-[#FFFBF7] transition-colors border-b border-gray-100 last:border-b-0 font-medium first:rounded-t-lg last:rounded-b-lg"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
