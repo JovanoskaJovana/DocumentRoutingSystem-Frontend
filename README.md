@@ -1,16 +1,95 @@
-# React + Vite
+# Flowdesk Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React-based frontend application for the **Flowdesk Document Routing System**. The application provides a role-based user interface for employees and administrators to upload, route, approve, reject, and track documents within an organization. This frontend communicates with the Flowdesk Backend via a secured REST API using JWT-based authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- React 19
+- Vite
+- Tailwind CSS / Material UI
+- Axios
+- React Router
+- JWT Authentication
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Secure login with JWT session handling
+- Role-based UI (ADMIN, EMPLOYEE – REGULAR or SIGNATORY)
+- Document upload and download
+- Inbox and routing views
+- Document approval and rejection
+- Document version history
+- Action and download audit visibility
+
+---
+
+## Project Structure
+
+src/
+- axios/ # Axios configuration and interceptors
+- hooks/ # Custom React hooks (auth, documents, actions)
+- contexts/ # Authentication context
+- providers/ # Authentication provider
+- repository/ # Data access layer for backend API communication
+- ui/ # Reusable UI components
+- ui/AdminComponents/ # UI components specific to Admin users
+- ui/EmployeeComponents/ # UI components specific to Employee users
+- ui/layout/ # Admin and Employee layouts
+- ui/login/ # Login UI components
+- assets/ # Static assets
+  
+---
+
+## Backend Dependency
+
+This frontend is designed to work with the Flowdesk Backend application. Make sure the backend is running before using the system.
+
+Backend repository:  
+https://github.com/JovanoskaJovana/DocumentRoutingSystem-Backend.git
+
+---
+
+## User Roles
+
+### EMPLOYEE
+- Upload documents
+- View uploaded documents and their status
+- Download documents
+- Edit documents
+- View documents routed to their department
+
+### SIGNATORY EMPLOYEE
+- Approve or reject routed documents
+- Upload documents
+- View uploaded documents and their status
+- Download documents
+- Edit documents
+- View documents routed to their department
+- View a list of downloaded documents
+
+### ADMIN
+- View documents across all departments
+- Audit document actions and downloads
+- Manage employees and departments
+
+---
+
+## Application Flow
+
+1. User logs in and receives a JWT token.
+2. An employee uploads a document.
+3. The system automatically routes the document to the appropriate department.
+4. A signatory employee from the routed department reviews and approves or rejects the document.
+5. All actions, versions and downloads are tracked and visible in the system.
+
+---
+
+## Notes
+
+- Authentication is handled via JWT stored in local storage.
+- API communication is centralized through Axios interceptors.
+- Unauthorized access automatically redirects the user to the login page.
