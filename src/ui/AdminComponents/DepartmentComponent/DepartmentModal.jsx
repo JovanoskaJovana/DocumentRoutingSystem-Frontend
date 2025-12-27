@@ -30,9 +30,7 @@ const DepartmentModal = ({ isOpen, onClose, onSubmit, department, mode }) => {
 
     try {
       setSubmitting(true);
-
       await onSubmit(dto);
-
       onClose();
     } catch (error) {
       setError(error?.response?.data?.message || "An error occurred");
