@@ -1,10 +1,10 @@
-import Sidebar from "./Sidebar";
-import Navbar from "./Navbar";
+import Sidebar from "../Layout/Sidebar";
+import Navbar from "../Layout/Navbar";
 import { Outlet, useLocation } from "react-router";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
-import AdminSidebar from "../../AdminComponents/AdminSidebar/AdminSidebar";
-import RegularEmployeeSidebar from "./RegularEmployeeSidebar";
+import AdminSidebar from "../AdminComponents/AdminSidebar/AdminSidebar";
+import RegularEmployeeSidebar from "../Layout/RegularEmployeeSidebar";
 
 const pageTitleFromPath = (pathname) => {
   

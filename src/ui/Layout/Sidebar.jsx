@@ -1,6 +1,6 @@
 import { Upload, History, Building2, Download, Inbox, LogOut, FileUp  } from "lucide-react";
 import {useNavigate, useLocation} from "react-router";
-import logo from "../../../assets/Logo.png";
+import logo from "../../assets/Logo.png";
 import authRepository from "../../repository/authRepository";
 import useAuth from "../../hooks/useAuth";
 

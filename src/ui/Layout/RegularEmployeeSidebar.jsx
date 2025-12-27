@@ -1,8 +1,8 @@
 import { Upload, FileUp, Building2, LogOut } from "lucide-react";
 import {useNavigate, useLocation} from "react-router";
-import logo from "../../../assets/Logo.png";
-import authRepository from "../../../repository/authRepository";
-import useAuth from "../../../hooks/useAuth";
+import logo from "../../assets/Logo.png";
+import authRepository from "../../repository/authRepository";
+import useAuth from "../../hooks/useAuth";
 
     const navItems = [
         { icon: FileUp, label: "my uploads", path: "/uploads"},

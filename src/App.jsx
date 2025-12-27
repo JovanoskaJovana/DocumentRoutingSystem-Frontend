@@ -1,7 +1,7 @@
 import './App.css'
 import {BrowserRouter, Routes, Route} from "react-router";
-import Login from './ui/EmployeeComponents/Login/Login.jsx';
-import Layout from './ui/EmployeeComponents/Layout/Layout.jsx'
+import Login from './ui/Login/Login.jsx';
+import Layout from './ui/Layout/Layout.jsx';
 import DocumentList from './ui/EmployeeComponents/Inbox/DocumentList.jsx';
 import DownloadList from './ui/EmployeeComponents/Downloads/DownloadList';
 import DocumentDeptList from './ui/EmployeeComponents/Department/DocumentDeptList';

@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import authRepository from "../../repository/authRepository";
 import { User, Lock, Mail } from "lucide-react";
-import logo from "../../../assets/Logo.png";
+import logo from "../../assets/Logo.png";
 
 const initialFormData = {
     "email": "",
