@@ -14,6 +14,9 @@ import DocumentUpload from './ui/EmployeeComponents/UploadAndRoute/DocumentUploa
 import EditDocument from './ui/EmployeeComponents/EditDocument/EditDocument.jsx';
 import AdminRoute from './ui/AdminComponents/AdminRoute/AdminRoute.jsx';
 import DepartmentList from './ui/AdminComponents/DepartmentComponent/DepartmentList.jsx';
+import EmployeeList from './ui/AdminComponents/EmployeeComponent/EmployeeList.jsx';
+import DepartmentDocumentsList from './ui/AdminComponents/DepartmentDocumentsComponent/DepartmenDocumentsList.jsx';
+import DocumentUploadList from './ui/EmployeeComponents/DocumentUploads/DocumentUploadList.jsx';
 
 const App = () => {
     return (
@@ -28,6 +31,7 @@ const App = () => {
                         <Route path="department" element={<DocumentDeptList />} />
                         <Route path="history" element={<DocumentHistoryList/>} />
                         <Route path="upload" element={<DocumentUpload/>} />
+                        <Route path="uploads" element={<DocumentUploadList/>} />
                         <Route path="documents/:documentId/actions" element={<DocumentActionList/>} />
                         <Route path="documents/:documentId/versions" element={<VersionList/>} />
                         <Route path="documents/:documentId/downloads" element={<DocumentDownloadList/>} />
@@ -38,6 +42,8 @@ const App = () => {
                         <Route path="/" element={<Layout />}>
                         <Route index element={<DepartmentList />} />
                         <Route path="departments" element={<DepartmentList />} />
+                        <Route path="employees" element={<EmployeeList />} />
+                        <Route path="department/documents" element={<DepartmentDocumentsList />} />
                         </Route>
                     </Route>
                 </Route>

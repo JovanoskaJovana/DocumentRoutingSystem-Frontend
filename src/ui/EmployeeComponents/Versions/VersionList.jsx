@@ -11,6 +11,8 @@ const VersionList = (page = 0, size = 10) => {
     const { data } = useDocumentVersions(documentId, page, size);
     const { setPageTitle } = useOutletContext();
 
+    console.log(data);
+
     useEffect(() => {
           if (data?.content?.length > 0)  {
               setPageTitle("Document: " + data.content[0].document);
@@ -39,8 +41,9 @@ const VersionList = (page = 0, size = 10) => {
             <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
               Note
             </div>
-            <div className="w-[120px]"></div>
-            <div className="w-[40px]"></div>
+            <div className="font-semibold text-gray-700 text-sm uppercase tracking-wide">
+              Download Version
+            </div>
           </div>
         </div>
 

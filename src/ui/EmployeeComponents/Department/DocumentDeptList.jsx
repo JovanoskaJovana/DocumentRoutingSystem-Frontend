@@ -43,7 +43,7 @@ const DocumentDeptList = () => {
             <div className="p-4 bg-[#FFFBF7] rounded-full w-fit mx-auto mb-4">
                 <FileText className="w-16 h-16 text-[#B8860B]" />
             </div>
-            <p className="text-gray-600 text-lg">Inbox is empty</p>
+            <p className="text-gray-600 text-lg">No documents are routed to this Department</p>
             </div>
         )}
         </div>

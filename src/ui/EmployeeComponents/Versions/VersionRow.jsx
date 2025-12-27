@@ -1,3 +1,4 @@
+import DownloadButton from "../../sharedComponents/DownloadButton";
 
 const VersionRow = ({document}) => {
 
@@ -15,9 +16,14 @@ const VersionRow = ({document}) => {
                     {document.uploadedByEmployee}
                 </div>
 
-                {/* Employee */}
-                <div className="text-gray-600 truncate">
+                {/* Change note */}
+                <div className="text-gray-600 w-64 truncate">
                     {document.changeNote}
+                </div>
+
+                {/* Download Button*/}
+                <div className="flex justify-center">
+                    <DownloadButton downloadUrl = {document.downloadUrl} fileName = {document.fileName}/>
                 </div>
                 
             </div>
@@ -26,4 +32,4 @@ const VersionRow = ({document}) => {
 
 };
 
-export default VersionRow
+export default VersionRow;
