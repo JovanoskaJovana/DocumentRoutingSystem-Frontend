@@ -1,19 +1,16 @@
-import { Upload, History, Building2, Download, Inbox, LogOut, FileUp  } from "lucide-react";
+import { Upload, FileUp, Building2, LogOut } from "lucide-react";
 import {useNavigate, useLocation} from "react-router";
 import logo from "../../../assets/Logo.png";
 import authRepository from "../../../repository/authRepository";
 import useAuth from "../../../hooks/useAuth";
 
     const navItems = [
-        { icon: Inbox, label: "inbox", path: "/" },
+        { icon: FileUp, label: "my uploads", path: "/uploads"},
         { icon: Upload, label: "upload document", path: "/upload" },
-        { icon: History, label: "document history", path: "/history" },
-        { icon: Building2, label: "department documents", path: "/department" },
-        { icon: Download, label: "my downloads", path: "/downloads" },
-        { icon: FileUp, label: "my uploads", path: "/uploads"}
+        { icon: Building2, label: "department documents", path: "/department" }
     ];
 
-const Sidebar = () => {
+const RegularEmployeeSidebar = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -85,4 +82,4 @@ const Sidebar = () => {
 
 };
 
-export default Sidebar;
+export default RegularEmployeeSidebar;

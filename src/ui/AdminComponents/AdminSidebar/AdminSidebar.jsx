@@ -5,11 +5,10 @@ import authRepository from "../../../repository/authRepository";
 import useAuth from "../../../hooks/useAuth";
 
     const navItems = [
+        { icon: Inbox, label: "inbox", path: "/" },
+        { icon: Building2, label: "department documents", path: "/department/documents" },
         { icon: Users, label: "employees", path: "/employees" },
-        { icon: Building2, label: "department documents", path: "/department" },
-        { icon: Building2, label: "departments", path: "/departments" },
-        { icon: Inbox, label: "inbox", path: "/" }
-
+        { icon: Building2, label: "departments", path: "/departments" }
     ];
 
 const Sidebar = () => {
@@ -32,7 +31,7 @@ const Sidebar = () => {
 
     return (
         <aside className="w-[270px] bg-white border-r border-gray-200 flex flex-col h-screen shadow-sm">
-            {/* Logo / brand */}
+            {/* Logo */}
             <div className="p-8 border-b border-gray-200">
                 <div className="flex items-center justify-center h-20 bg-[#FFFBF7] rounded-lg shadow-sm">
                 <span className="text-2xl font-bold text-[#B8860B]">
@@ -67,7 +66,7 @@ const Sidebar = () => {
                 </div>
             </nav>
 
-            {/* Bottom action */}
+            {/* Log out action */}
             <div className="p-4 border-t border-gray-200">
                 <button
                     onClick={handleLogout}
