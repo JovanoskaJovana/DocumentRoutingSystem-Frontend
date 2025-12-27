@@ -16,7 +16,8 @@ const Login = () => {
     const [formData, setFormData] = useState(initialFormData);
     const [errorMessage, setErrorMessage] = useState("");
 
-    const {login, isLoggedIn} = useAuth();;
+    const {login, isLoggedIn} = useAuth();
+    const {user} = useAuth();
 
     const handleChange = (event) => {
         const {name, value} = event.target;
