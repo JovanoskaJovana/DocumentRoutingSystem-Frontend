@@ -42,6 +42,10 @@ const documentRepository = {
     getDocument: async (documentId) => {
         const { data } = await axiosInstance.get(`/documents/${documentId}`);
         return data;
+    },
+    getUploadedByEmployee: async (page = 0, size = 10) => {
+        const { data } = await axiosInstance.get("/documents/uploadedDocuments", { params: { page, size }});
+        return data;
     }
 };
 
