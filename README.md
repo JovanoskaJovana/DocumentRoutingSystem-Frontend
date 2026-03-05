@@ -1,6 +1,6 @@
 # Flowdesk Frontend
 
-React-based frontend application for the **Flowdesk Document Routing System**. The application provides a role-based user interface for employees and administrators to upload, route, approve, reject, and track documents within an organization. This frontend communicates with the Flowdesk Backend via a secured REST API using JWT-based authentication.
+React-based frontend application for the **Flowdesk Document Routing System**. The application provides a role-based user interface for employees and administrators to upload, route, approve, reject and track documents within an organization. This frontend communicates with the Flowdesk Backend via a secured REST API using JWT-based authentication.
 
 ---
 
@@ -17,13 +17,16 @@ React-based frontend application for the **Flowdesk Document Routing System**. T
 
 ## Key Features
 
-- Secure login with JWT session handling
+- Secure login with JWT session handling (company code, email, password)
 - Role-based UI (ADMIN, EMPLOYEE – REGULAR or SIGNATORY)
 - Document upload and download
+- Automatic document routing with manual fallback on failure
+- Manual department selection when automatic routing fails
 - Inbox and routing views
 - Document approval and rejection
 - Document version history
 - Action and download audit visibility
+- Keyword suggestions for routing improvement
 
 ---
 
@@ -41,7 +44,7 @@ src/
 - ui/layout/ # Admin and Employee layouts
 - ui/login/ # Login UI components
 - assets/ # Static assets
-  
+
 ---
 
 ## Backend Dependency
@@ -75,16 +78,19 @@ https://github.com/JovanoskaJovana/DocumentRoutingSystem-Backend.git
 - View documents across all departments
 - Audit document actions and downloads
 - Manage employees and departments
+- View keyword suggestions for routing
 
 ---
 
 ## Application Flow
 
-1. User logs in and receives a JWT token.
+1. User logs in with company code, email and password and receives a JWT token.
 2. An employee uploads a document.
-3. The system automatically routes the document to the appropriate department.
-4. A signatory employee from the routed department reviews and approves or rejects the document.
-5. All actions, versions and downloads are tracked and visible in the system.
+3. The employee clicks "Route Document" to trigger automatic routing.
+4. If routing succeeds, the document is assigned to the appropriate department.
+5. If routing fails (`FAILED_ROUTING`), the employee is presented with a list of departments and selects one manually.
+6. A signatory employee from the routed department reviews and approves or rejects the document.
+7. All actions, versions and downloads are tracked and visible in the system.
 
 ---
 
