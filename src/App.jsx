@@ -17,6 +17,7 @@ import DepartmentList from './ui/AdminComponents/DepartmentComponent/DepartmentL
 import EmployeeList from './ui/AdminComponents/EmployeeComponent/EmployeeList.jsx';
 import DepartmentDocumentsList from './ui/AdminComponents/DepartmentDocumentsComponent/DepartmenDocumentsList.jsx';
 import DocumentUploadList from './ui/EmployeeComponents/DocumentUploads/DocumentUploadList.jsx';
+import KeywordSuggestions from './ui/AdminComponents/KeywordSuggestions.jsx';
 
 const App = () => {
     return (
@@ -40,10 +41,10 @@ const App = () => {
 
                     <Route element={<AdminRoute />}>
                         <Route path="/" element={<Layout />}>
-                        <Route index element={<DepartmentList />} />
-                        <Route path="departments" element={<DepartmentList />} />
-                        <Route path="employees" element={<EmployeeList />} />
-                        <Route path="department/documents" element={<DepartmentDocumentsList />} />
+                            <Route path="suggestions" element={<KeywordSuggestions />} />  {/* remove `index` */}
+                            <Route path="departments" element={<DepartmentList />} />
+                            <Route path="employees" element={<EmployeeList />} />
+                            <Route path="department/documents" element={<DepartmentDocumentsList />} />
                         </Route>
                     </Route>
                 </Route>

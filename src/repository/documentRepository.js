@@ -46,6 +46,16 @@ const documentRepository = {
     getUploadedByEmployee: async (page = 0, size = 10) => {
         const { data } = await axiosInstance.get("/documents/uploadedDocuments", { params: { page, size }});
         return data;
+    },
+    getmanualRouteDocumentDepartments: async (documentId) => {
+        const { data } = await axiosInstance.get(`/documents/${documentId}/manual-review/departments`);
+        return data;
+    },
+    manualRouteDocument: async (documentId, departmentKey) => {
+        const { data } = await axiosInstance.post(`/documents/${documentId}/manual-review`, null, { 
+            params: { departmentKey }
+        });
+        return data;
     }
 };
 

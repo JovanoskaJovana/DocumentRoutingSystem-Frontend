@@ -1,14 +1,14 @@
-import { Building2, Users, Inbox, LogOut } from "lucide-react";
+import { Building2, Users, Inbox, LogOut, Lightbulb } from "lucide-react";
 import {useNavigate, useLocation} from "react-router";
 import logo from "../../../assets/Logo.png";
 import authRepository from "../../../repository/authRepository";
 import useAuth from "../../../hooks/useAuth";
 
     const navItems = [
-        { icon: Inbox, label: "inbox", path: "/" },
+        { icon: Lightbulb, label: "suggestions", path: "/suggestions" },  // was "/"
         { icon: Building2, label: "department documents", path: "/department/documents" },
         { icon: Users, label: "employees", path: "/employees" },
-        { icon: Building2, label: "departments", path: "/departments" }
+        { icon: Building2, label: "departments", path: "/departments" },
     ];
 
 const Sidebar = () => {
