@@ -2,12 +2,13 @@ import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import authRepository from "../../repository/authRepository";
-import { User, Lock, Mail } from "lucide-react";
+import { User, Lock, Mail, Building2 } from "lucide-react";
 import logo from "../../assets/Logo.png";
 
 const initialFormData = {
     "email": "",
-    "password": ""
+    "password": "",
+    "companyCode": ""
 };
 
 const Login = () => {
@@ -29,27 +30,24 @@ const Login = () => {
 
     const handleSubmit = () => {
         authRepository
-            .login(formData.email, formData.password)
-            .then((response)  => {
+            .login(formData.email, formData.password, formData.companyCode)
+            .then((response) => {
                 console.log("The user is succesfully logged in.");
                 login(response.token);
                 navigate("/");
             })
-            .catch ((error) => {
-
+            .catch((error) => {
                 console.log(error);
-                
                 if (error.response?.status === 401) {
-                    setErrorMessage("Email or password is incorrect.");
+                    setErrorMessage("Email, password or company code is incorrect.");
                 }
             });
     };
 
     useEffect(() => {
-        if(!isLoggedIn) return;
-        navigate('/')
-
-    }, [isLoggedIn])
+        if (!isLoggedIn) return;
+        navigate('/');
+    }, [isLoggedIn]);
 
     return (
         <div className="min-h-screen bg-cream flex items-center justify-center p-4">
@@ -71,16 +69,17 @@ const Login = () => {
                                 src={logo}
                                 alt="App Logo"
                                 className="mx-auto w-[13.5rem] h-[13.5rem] object-contain drop-shadow-md -mt-20"
-                            /> 
+                            />
                         </div>
 
                         <form
                             onSubmit={(e) => {
-                                e.preventDefault(); 
+                                e.preventDefault();
                                 handleSubmit();
                             }}
                         >
                             <div className="space-y-6 -mt-10">
+
                                 {/* Email Input */}
                                 <div className="relative">
                                     <div className="absolute left-0 top-0 bottom-0 w-12 bg-slate-400 rounded-l-lg flex items-center justify-center">
@@ -111,6 +110,21 @@ const Login = () => {
                                     />
                                 </div>
 
+                                {/* Company Code Input */}
+                                <div className="relative">
+                                    <div className="absolute left-0 top-0 bottom-0 w-12 bg-slate-400 rounded-l-lg flex items-center justify-center">
+                                        <Building2 className="w-5 h-5 text-white" />
+                                    </div>
+                                    <input
+                                        type="text"
+                                        name="companyCode"
+                                        placeholder="Company Code"
+                                        value={formData.companyCode}
+                                        onChange={handleChange}
+                                        className="w-full pl-16 pr-4 py-3.5 bg-slate-300 text-slate-700 placeholder-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold transition-all"
+                                    />
+                                </div>
+
                                 {/* Login Button */}
                                 <button
                                     type="submit"
@@ -120,7 +134,7 @@ const Login = () => {
                                 </button>
 
                                 {errorMessage && (
-                                     <p className="mt-4 text-center text-red-600 font-medium">
+                                    <p className="mt-4 text-center text-red-600 font-medium">
                                         {errorMessage}
                                     </p>
                                 )}

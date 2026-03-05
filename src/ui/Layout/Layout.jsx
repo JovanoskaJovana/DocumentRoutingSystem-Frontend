@@ -9,6 +9,8 @@ import RegularEmployeeSidebar from "../Layout/RegularEmployeeSidebar";
 const pageTitleFromPath = (pathname) => {
   
   if (pathname === "/") return "Inbox";
+  if (pathname.startsWith("/suggestions")) return "Suggestions";
+  if (pathname.startsWith("/employees")) return "Employees";
   if (pathname.startsWith("/downloads")) return "My Downloads";
   if (pathname.startsWith("/uploads")) return "My Uploads";
   if (pathname.startsWith("/upload")) return "Upload Document";

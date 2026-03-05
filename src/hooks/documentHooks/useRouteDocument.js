@@ -18,17 +18,19 @@ const useRouteDocument = () => {
         });
 
         try {
-            await documentRepository.routeDocument(documentId);
+            const data = await documentRepository.routeDocument(documentId);
             setState({
                 loading: false,
                 error: null
             });
+            return data;
         } catch (error) {
             console.error("Failed to route document", error);
             setState({
                 loading: false,
                 error
             });
+            return error.response?.data; 
         }
     }, []);
 
@@ -41,5 +43,3 @@ const useRouteDocument = () => {
 
 
 export default useRouteDocument;
-
-
