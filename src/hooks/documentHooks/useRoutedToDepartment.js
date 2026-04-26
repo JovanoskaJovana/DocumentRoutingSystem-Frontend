@@ -7,7 +7,7 @@ const initialState = {
     error: null
 }
 
-const useRoutedToDepartment = (page = 0, size = 10) => {
+const useRoutedToDepartment = (page = 0, size = 7) => {
 
     const[state, setState] = useState(initialState);
 

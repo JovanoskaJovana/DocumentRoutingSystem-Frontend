@@ -8,7 +8,7 @@ const initialState = {
 };
 
 
-const useDocumentInbox = (page = 0, size = 10) => {
+const useDocumentInbox = (page = 0, size = 7) => {
 
     const [state, setState] = useState(initialState);
    

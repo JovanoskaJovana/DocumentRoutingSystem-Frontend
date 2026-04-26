@@ -21,12 +21,35 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response.status === 401 || error.response.status === 403) {
-            localStorage.removeItem("token");
-            if (window.location.pathname !== "/login"){
-                window.location.href = "/login";
-            }
+        const status = error.response?.status;
+        const message = error.response?.data?.message || "An unexpected error occurred";
+
+        switch(status) {
+            case 400:
+                toast.error(message);
+                break;
+            case 401:
+                localStorage.removeItem("token");
+                if (window.location.pathname !== "/login"){
+                    window.location.href = "/login";
+                }
+                break;
+            case 403:
+                toast.error(message);
+                break;
+            case 404:
+                toast.error(message);
+                break;
+            case 409:
+                toast.error(message);
+                break;
+            case 500:
+                toast.error(message);
+                break;
+            default:
+                toast.error(message);
         }
+        
         return Promise.reject(error)
     }
 );

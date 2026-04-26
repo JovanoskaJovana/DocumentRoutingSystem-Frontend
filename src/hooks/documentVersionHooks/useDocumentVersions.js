@@ -7,7 +7,7 @@ const initialState = {
     error: null
 };
 
-const useDocumentVersions = (documentId, page, size) => {
+const useDocumentVersions = (documentId, page = 0, size = 7) => {
 
     const [state, setState] = useState(initialState);
 
