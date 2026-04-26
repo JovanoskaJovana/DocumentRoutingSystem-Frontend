@@ -7,7 +7,7 @@ const initialState = {
     error: null
 }
 
-const useDocumentUploads = (page = 0, size = 10) => {
+const useDocumentUploads = (page = 0, size = 7) => {
 
     const[state, setState] = useState(initialState);
 
