@@ -1,6 +1,6 @@
 import useDocumentHistory from "../../../hooks/documentHooks/useDocumentHistory";
 import DocumentHistoryRow from "./DocumentHistoryRow";
-import { FileText } from "lucide-react"; 
+import { FileText, ChevronLeft, ChevronRight  } from "lucide-react"; 
 import { useState } from "react"; 
 
 const DocumentHistory = () => {

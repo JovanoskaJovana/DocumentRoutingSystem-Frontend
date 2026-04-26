@@ -1,7 +1,7 @@
 import useDocumentInbox from "../../../hooks/documentHooks/useDocumentInbox";
 import useAuth from "../../../hooks/useAuth";
 import DocumentRow from "./DocumentRow";
-import { FileText } from "lucide-react";
+import { FileText, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 const DocumentList = () => {

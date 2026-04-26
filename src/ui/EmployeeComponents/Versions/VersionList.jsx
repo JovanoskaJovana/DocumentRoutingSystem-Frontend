@@ -2,13 +2,16 @@ import useDocumentVersions from "../../../hooks/documentVersionHooks/useDocument
 import { useParams, useOutletContext } from "react-router";
 import { useEffect } from "react";
 import VersionRow from "./VersionRow";
-import { FileText, ArrowLeft } from "lucide-react";
+import { FileText, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 
-const VersionList = (page = 0, size = 10) => {
+const VersionList = () => {
+
+    const [page, setPage] = useState(0);
 
     const { documentId } = useParams();
-    const { data } = useDocumentVersions(documentId, page, size);
+    const { data, totalPages, loading, error } = useDocumentVersions(documentId);
     const { setPageTitle } = useOutletContext();
 
     console.log(data);
@@ -63,6 +66,33 @@ const VersionList = (page = 0, size = 10) => {
             <p className="text-gray-600 text-lg">
                 No versions found for this document.
             </p>
+          </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick = {() => setPage((p) => p - 1)}
+              disabled = {page === 0}
+              className = "flex items-center gap-1 px-4 py-2 rounded-lg border border-[#B8860B] text-[#B8860B] font-medium text-sm transition-colors hover:bg-[#B8860B] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[#B8860B]"
+            >
+              <ChevronLeft className = "w-4 h-4" />
+              Previous
+            </button>
+
+            <span className = "text-sm text-gray-500">
+              Page <span className = "font-semibold text-gray-700"> {page + 1} </span> of <span className="font-semibold text-gray-700"> {totalPages} </span>
+            </span>
+
+            <button
+              onClick={() => setPage((p) => p + 1)}
+              disabled={page === totalPages - 1}
+              className="flex items-center gap-1 px-4 py-2 rounded-lg border border-[#B8860B] text-[#B8860B] font-medium text-sm transition-colors hover:bg-[#B8860B] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[#B8860B]"
+            >
+              Next
+              <ChevronRight className = "w-4 h-4" />
+            </button>
           </div>
         )}
       </div>

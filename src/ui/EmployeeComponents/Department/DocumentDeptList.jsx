@@ -1,6 +1,6 @@
 import useRoutedToDepartment from "../../../hooks/documentHooks/useRoutedToDepartment";
 import DocumentDeptRow from "./DocumentDeptRow";
-import { FileText } from "lucide-react";
+import { FileText, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 const DocumentDeptList = () => {
