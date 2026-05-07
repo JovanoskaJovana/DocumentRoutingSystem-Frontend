@@ -1,4 +1,4 @@
-import DownloadButton from "../../sharedComponents/DownloadButton";
+import DownloadButton from "../../SharedComponents/DownloadButton";
 
 const VersionRow = ({document}) => {
 

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
-import DownloadButton from "../../sharedComponents/DownloadButton";
-import KebabMenu from "../../sharedComponents/KebabMenu";
+import DownloadButton from "../../SharedComponents/DownloadButton";
+import KebabMenu from "../../SharedComponents/KebabMenu";
 
 
 const DocumentHistoryRow = ({document}) => {
