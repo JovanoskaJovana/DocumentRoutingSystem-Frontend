@@ -99,3 +99,20 @@ https://github.com/JovanoskaJovana/DocumentRoutingSystem-Backend.git
 - Authentication is handled via JWT stored in local storage.
 - API communication is centralized through Axios interceptors.
 - Unauthorized access automatically redirects the user to the login page.
+
+---
+
+## Running with Docker
+
+This service is intended to be run as part of the full stack via Docker Compose.
+See [DocumentRoutingSystem-Infrastructure](https://github.com/JovanoskaJovana/DocumentRoutingSystem-Infrastructure)
+for setup instructions.
+
+To run the frontend in isolation:
+
+```bash
+docker build -t routing-system-frontend:1.0 .
+docker run -p 80:80 routing-system-frontend:1.0
+```
+
+> Note: Running in isolation requires the backend to be running and accessible.
