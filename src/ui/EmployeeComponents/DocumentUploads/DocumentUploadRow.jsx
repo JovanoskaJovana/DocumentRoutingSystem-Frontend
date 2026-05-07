@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import useDownloadDocument from "../../../hooks/documentDownloadHooks/useDownloadDocument";
-import KebabMenu from "../../sharedComponents/KebabMenu";
+import KebabMenu from "../../SharedComponents/KebabMenu";
 
 
 const DocumentHistoryRow = ({document}) => {

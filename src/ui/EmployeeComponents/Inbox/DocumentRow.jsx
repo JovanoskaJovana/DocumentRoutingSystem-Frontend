@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import useSignDocumentAction from "../../../hooks/documentHooks/useSignDocumentActions";
 import useAuth from "../../../hooks/useAuth";
-import DownloadButton from "../../sharedComponents/DownloadButton";
-import KebabMenu from "../../sharedComponents/KebabMenu";
+import DownloadButton from "../../SharedComponents/DownloadButton";
+import KebabMenu from "../../SharedComponents/KebabMenu";
 
 const DocumentRow = ({ document }) => {
   const navigate = useNavigate();
